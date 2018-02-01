@@ -28,6 +28,8 @@ class Common(object):
         'whitenoise.runserver_nostatic',
         'django.contrib.staticfiles',
         'django_extensions',
+
+        'project',
     ]
 
     MIDDLEWARE = [
