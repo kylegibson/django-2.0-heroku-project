@@ -1,6 +1,16 @@
 # django-2.0-heroku-project
 
 
+## Features
+
+* Bootstrap4 base template
+* HAML templates
+* Basic view/url configuration example
+* Whitenoise for static file serving
+* Waitress WSGI server
+* pipenv
+
+
 ## Heroku Quick Deploy
 
 ```
