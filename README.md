@@ -11,6 +11,19 @@
 * pipenv
 
 
+## Local Quick start
+
+```
+ln -s dev.env .env
+pipenv install --dev --python=3.6
+pipenv shell
+
+python manage.py migrate
+python manage.py runserver
+```
+
+
+
 ## Heroku Quick Deploy
 
 ```
