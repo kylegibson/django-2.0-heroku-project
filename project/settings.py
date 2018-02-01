@@ -102,6 +102,7 @@ class Development(Common, Configuration):
     INTERNAL_IPS = [
         '127.0.0.1',
     ]
+    AUTH_PASSWORD_VALIDATORS = []
 
 
 class Production(Common, Configuration):
