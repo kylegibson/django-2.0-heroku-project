@@ -47,7 +47,7 @@ class Common(object):
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
             'DIRS': [],
-            'APP_DIRS': True,
+            'APP_DIRS': False,
             'OPTIONS': {
                 'context_processors': [
                     'django.template.context_processors.debug',
@@ -55,6 +55,10 @@ class Common(object):
                     'django.contrib.auth.context_processors.auth',
                     'django.contrib.messages.context_processors.messages',
                 ],
+                'loaders': (
+                    'hamlpy.template.loaders.HamlPyFilesystemLoader',
+                    'hamlpy.template.loaders.HamlPyAppDirectoriesLoader',
+                ),
             },
         },
     ]
