@@ -22,7 +22,20 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+### Local with DEBUG = False
 
+If you want to run locally,
+with `DEBUG = False`,
+make sure you run
+
+```
+python manage.py collectstatic
+```
+
+Otherwise,
+the admin site
+among other things,
+will not work.
 
 ## Heroku Quick Deploy
 
