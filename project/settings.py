@@ -106,6 +106,9 @@ class Common(object):
 class Development(Common, Configuration):
     ALLOWED_HOSTS = ['*']
     DEBUG = True
+    # Set DEBUG_PROPAGATE_EXCEPTIONS = True to show exceptions on the console
+    # even when DEBUG = False
+    DEBUG_PROPAGATE_EXCEPTIONS = False
     INTERNAL_IPS = [
         '127.0.0.1',
     ]
