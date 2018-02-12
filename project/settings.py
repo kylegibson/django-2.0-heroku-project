@@ -16,8 +16,8 @@ from configurations import Configuration, values
 class Common(object):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     SECRET_KEY = values.SecretValue()
-    DEBUG = values.BooleanValue(False)
-    ALLOWED_HOSTS = []
+    DEBUG = values.BooleanValue(True)
+    ALLOWED_HOSTS = ['*']
 
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -110,8 +110,6 @@ class Common(object):
 
 
 class Development(Common, Configuration):
-    ALLOWED_HOSTS = ['*']
-    DEBUG = True
     # Set DEBUG_PROPAGATE_EXCEPTIONS = True to show exceptions on the console
     # even when DEBUG = False
     DEBUG_PROPAGATE_EXCEPTIONS = False
@@ -125,6 +123,7 @@ class Development(Common, Configuration):
 
 
 class Production(Common, Configuration):
+    DEBUG = False
     ALLOWED_HOSTS = values.ListValue([], separator=' ')
     SESSION_COOKIE_SECURE = values.BooleanValue(True)
     SECURE_BROWSER_XSS_FILTER = values.BooleanValue(True)
