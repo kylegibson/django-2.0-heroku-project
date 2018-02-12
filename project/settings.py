@@ -102,6 +102,12 @@ class Common(object):
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+    EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+    SENDGRID_API_KEY = values.Value(None, environ_prefix=None)
+    SERVER_EMAIL = values.Value(None)
+    # DJANGO_ADMINS=Bob,bob@bob.com;Dave,dave@dave.com
+    ADMINS = values.SingleNestedTupleValue([])
+
 
 class Development(Common, Configuration):
     ALLOWED_HOSTS = ['*']
@@ -113,6 +119,9 @@ class Development(Common, Configuration):
         '127.0.0.1',
     ]
     AUTH_PASSWORD_VALIDATORS = []
+
+    # Use the sendgrid API, but don't actually deliver emails
+    SENDGRID_SANDBOX_MODE_IN_DEBUG = values.BooleanValue(True)
 
 
 class Production(Common, Configuration):
