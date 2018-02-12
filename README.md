@@ -9,6 +9,7 @@
 * Whitenoise for static file serving
 * Waitress WSGI server
 * pipenv
+* Email sending using SendGrid
 
 
 ## Local Quick start
@@ -57,3 +58,64 @@ heroku run python manage.py migrate
 heroku run python manage.py createsuperuser
 heroku open
 ```
+
+
+## Email setup
+
+### 1. Attach SendGrid Heroku Add-on
+
+This will only work if your Heroku account
+has a credit card added.
+The add-on is still free.
+The credit card is just to verify your identity.
+
+```
+heroku addons:create sendgrid:starter
+```
+
+### 2. Access SendGrid
+
+From your Heroku app dashboard,
+click on the SendGrid app.
+This will redirect you
+to SendGrid's website
+and automatically log you in.
+
+### 3. Create an API key
+
+Create an API key with Restricted Access: Mail Send
+
+See: https://sendgrid.com/docs/User_Guide/Settings/api_keys.html
+
+### 4. Tell Heroku what the key is
+
+```
+heroku config:set SENDGRID_API_KEY=...
+```
+
+### 5. Remove unused SENDGRID Heroku configs
+
+When the SendGrid add-on is created,
+it adds credentials to the configuration
+that we don't need anymore
+
+```
+heroku config:unset SENDGRID_USERNAME SENDGRID_PASSWORD
+```
+
+### 6. (optional) Create another API key for local use
+
+Follow the applicable steps above,
+and add the key to `dev.env`.
+
+
+## Configuring emails
+
+### Error emails
+
+Update `.env` to set `SERVER_EMAIL` and `ADMINS` to their appropriate
+values.
+
+### Allow sending emails locally when DEBUG = True
+
+Update `.env` to set `SENDGRID_SANDBOX_MODE_IN_DEBUG='yes'`
