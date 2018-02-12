@@ -112,7 +112,7 @@ class Common(object):
 class Development(Common, Configuration):
     # Set DEBUG_PROPAGATE_EXCEPTIONS = True to show exceptions on the console
     # even when DEBUG = False
-    DEBUG_PROPAGATE_EXCEPTIONS = False
+    DEBUG_PROPAGATE_EXCEPTIONS = values.BooleanValue(False)
     INTERNAL_IPS = [
         '127.0.0.1',
     ]
